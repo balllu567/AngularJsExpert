@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="angular/angular.min.js"></script>
+<script type="text/javascript" src="AlgorithmExpert.js"></script>
+
+<head>
+    <title>javascript code</title>
+    <style type="text/css">
+        div{
+            font-size: 20px;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            background: #ccc;
+            border-bottom: 1px solid #b2b2b2;
+            margin-bottom: 2px;
+            border-radius: 5px;
+        }
+        div:first-child{
+            background: red !important;
+
+        }
+       /* div:nth-child(3), div:nth-child(5), div:nth-child(7), div:nth-child(9), div:nth-child(10), div:nth-child(13), div:nth-child(15) {
+            background: blue;
+        }*/
+         div:nth-child(2n+1){
+            background: blue;
+        }
+    </style>
+</head>
+
+<body ng-app="javascriptApp" ng-controller="algoritmController"> 
+    <div>greatestCommonDivisor : {{gcd}}</div>
+    <div>Fibonacci number : {{fibonacValue}}</div>
+    <div>primeFactors : {{primeFactors}}</div>
+    <div>isPrime : {{isPrime}}</div>
+    <div>factorial : {{factorial}}</div>
+    <div>swapNumb : {{swapNumb}}</div>
+    <div>reverseString : {{reverseString}}</div>
+    <div></div>
+</body> 
+</html>
