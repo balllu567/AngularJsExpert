@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="angular/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div>
+        <p>The hexadecimal value of 255 is:</p>
+        <h1>{{hex}}</h1>
+        <div class="factory">
+            <div ng-repeat="fc in fatory">{{fc |myFilter}}</div>
+        </div>
+    </div>
+    <p>A custom service whith a method that converts a given number into a hexadecimal number.</p>
+    <div ng-repeat="i in [0,1,2]">
+        <simple>
+            <div>Inner content</div>
+        </simple>
+    </div>
+    <monthdate></monthdate>
+    <addtest></addtest>
+    <div ng-init="items = []">
+        <button ng-click="items.push(items.length)">Add Item</button>
+        <button ng-click="items = []">Reset Items</button>
+        <pre>{{ items }}</pre>
+        <test items="items"></test>
+    </div>
+    <script>
+    var app = angular.module('myApp', []);
+    app.directive('addtest', {
+        bindings: { items: '<' },
+        template: '<pre>{{ $ctrl.log | json }}</pre>',
+        controller: function() {
+            this.log = [];
+
+            this.$doCheck = function() {
+                if (this.items_ref !== this.items) {
+                    this.log.push('doCheck: items changed');
+                    this.items_ref = this.items;
+                }
+                if (!angular.equals(this.items_clone, this.items)) {
+                    this.log.push('doCheck: items mutated');
+                    this.items_clone = angular.copy(this.items);
+                }
+            };
+        }
+    });
+
+    app.service('hexafy', function() {
+        this.myFunc = function(x) {
+            return x.toString(24);
+        }
+    });
+    app.filter('myFilter', ['hexafy', function(hexafy) {
+        return function(x) {
+            return hexafy.myFunc(x);
+        };
+    }]);
+    app.controller('myCtrl', ['$scope', 'hexafy', function($scope, hexafy) {
+        $scope.hex = hexafy.myFunc(25);
+        $scope.fatory = [4234,243,24343];
+    }]);
+
+
+    app.directive("simple", function() {
+        return {
+            restrict: "EA",
+            transclude: true,
+            template: "<div>{{label}}<div ng-transclude></div></div>",
+            compile: function(element, attributes) {
+                return {
+                    pre: function(scope, element, attributes, controller, transcludeFn) {
+
+                    },
+                    post: function(scope, element, attributes, controller, transcludeFn) {
+
+                    }
+                }
+            },
+            controller: function($scope) {
+
+            }
+        };
+    });
+    app.component('monthdate', {
+        template: 'Month: <input ng-model="$ctrl.month" ng-change="$ctrl.updateDate()">' +
+            'Date: {{ $ctrl.date }}' +
+            '<test date="$ctrl.date"></test>',
+        controller: function() {
+            this.date = new Date();
+            this.month = this.date.getMonth();
+            this.updateDate = function() {
+                this.date.setMonth(this.month);
+            };
+        }
+    })
+    app.component('logtest', {
+        bindings: { date: '<' },
+        template: '<pre>{{ $ctrl.log | json }}</pre>',
+        controller: function() {
+            var previousValue;
+            this.log = [];
+            this.$doCheck = function() {
+                var currentValue = this.date && this.date.valueOf();
+                if (previousValue !== currentValue) {
+                    this.log.push('doCheck: date mutated: ' + this.date);
+                    previousValue = currentValue;
+                }
+            };
+        }
+    });
+    </script>
+</body>
+
+</html>

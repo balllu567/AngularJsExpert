@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> image slider carasoual</title>
+    <script src="jquery.min.js"></script>
+    <script src="slick.js"></script>
+    <link rel="stylesheet" type="text/css" href="slick-theme.css">
+    <script type="text/javascript">
+     
+    $(document).ready(function ($) {
+  
+  var gadgetCarousel = $(".carousel");
+  
+  gadgetCarousel.each(function() {
+    if ($(this).is(".type-one-carousel")) {
+		$(this).slick({
+        dots: true,
+        infinite: true,
+        slidesToShow: 2
+      });
+    } 
+    else if ($(this).is(".type-two-carousel")){
+      $(this).slick({
+        dots: true,
+        infinite: true,
+        slidesToShow: 6
+      });
+    }
+    else {
+      $(this).slick();
+    }
+  })
+  
+  
+  
+  
+});
+    </script>
+     <style type="text/css" media="screen">
+    body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 1em;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5em;
+        font-weight: 400;
+    }
+
+    p {
+        margin: 0 0 .75em;
+    }
+
+    .entity {
+        background-color: #fff;
+        margin-bottom: 2em;
+        position: relative;
+    }
+
+    .carousel {
+        margin: 2em 0;
+    }
+
+    .type-card-wrapper {
+        display: block;
+    }
+
+    .type-card {
+        border: .063em solid #464646;
+        border-radius: .25em;
+        background-color: white;
+        list-style-image: none;
+        list-style-type: none;
+        width: 16em;
+        height: 16em;
+        z-index: 15;
+        position: relative;
+        margin: 0;
+        display: inline-block;
+    }
+    </style>
+</head>
+
+<body>
+   <!--  <form>
+        <select id="selectCourse" </select>
+    </form> -->
+    <section class="entity">
+  <article class="list-wrapper">
+    <div>
+      <h1>Top items</h1>
+
+      <p>Testing a carousel of a list of top items</p>
+    </div>
+    <!-- os-gadget-node-list-header -->
+    <div
+      class="carousel type-one-carousel">
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 1</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 2</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 3</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 4</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 5</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 6</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 7</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 8</h1>
+        </div>
+      </div>
+    </div>
+    <!-- end of type-card-wrapper -->
+    </div>
+
+    <div class="entity">
+      <h1>Top items</h1>
+
+      <p>Testing a carousel of a list of top items</p>
+    </div>
+    <!-- header -->
+    <div
+      class="carousel type-two-carousel">
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 1</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 2</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 3</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 4</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 5</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 6</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 7</h1>
+        </div>
+      </div>
+      <div class="type-card-wrapper">
+        <div class="type-card">
+          <h1>Test 8</h1>
+        </div>
+      </div>
+    </div>
+    <!-- end of type-card-wrapper -->
+    </div>
+  </article>
+  <!-- end of os-gadget-node-list-wrapper -->
+</section>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title></title>
+    <script src="jquery.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="styled.scss"> -->
+    <script src="angular/angular.min.js"></script>
+    <script src="parseEvalinterpolate.js"></script>
+</head>
+
+<body ng-app="parseEval" ng-controller="parseEvalInterpolate">
+    <h1>{{eval}}</h1>
+    <br>
+    <h2>{{parses}}</h2>
+    <br>
+    <h2>{{interpolate}}</h2>
+    <div>Parse: {{parse}} - {{parse_assign}}</div>
+    <div>Interpolate: {{interpolate}}</div>
+    <div>Compile : {{comlist}}</div>
+    <button ng-click="getRequest()">Test Rest</button>
+    <button ng-click="postRequest()">Test Rest</button>
+    <div>
+        <form name="form" class="css-form" novalidate>Name:
+            <input type="text" ng-model="user.name" name="uName" required />
+            <br />E-mail:
+            <input type="email" ng-model="user.email" name="uEmail" required/>
+            <br />Gender:
+            <input type="radio" ng-model="user.gender" value="male" />male
+            <input type="radio" ng-model="user.gender" value="female" />female
+            <br />
+            <button ng-click="update(user)">SAVE</button>
+            <br/>User Data: {{user}}</form>
+        <br/> See browser network log for the requests made.
+    </div>
+</body>
+
+</html>

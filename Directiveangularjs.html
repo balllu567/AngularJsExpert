@@ -1,0 +1,49 @@
+<!doctype html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Directive Angularjs</title>
+</head>
+    <script src="angular/angular.min.js"></script>
+
+<script type="text/javascript" charset="utf-8" async defer>
+var directiveapp = angular.module('appcompile', []);
+directiveapp.controller('compilecontroller', ['$scope','$http', function($scope, $http){
+	$scope.compiledata = 'Compile Angularjs';
+	
+}]);
+directiveapp.directive("welcome", function() {
+    return {
+        restrict: "E",
+        controller: function($scope) {
+            $scope.words = [];
+
+            this.sayHello = function() {
+                $scope.words.push("hello");
+            };
+
+            this.sayHowdy = function() {
+                $scope.words.push("howdy");
+            };
+
+            this.sayHi = function() {
+                $scope.words.push("hi");
+            };
+        },
+
+        link: function(scope, element) {
+            element.bind("mouseenter", function() {
+                console.log(scope.words);
+            });
+        }
+    }
+});
+</script>
+
+<body ng-app="appcompile" ng-controller="compilecontroller">
+	<h1>{{compiledata}}</h1>
+	<welcome></welcome>
+</body>
+
+</html>

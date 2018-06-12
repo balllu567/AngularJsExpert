@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>javascript code</title>
+    <script>
+    const array = [10, 12, 15, 21];
+    for (var i = 0; i < array.length; i++) {
+        setTimeout(function(i_local) {
+            return function() {
+                console.log('index of: ' + i_local);
+                document.getElementById('valueId').innerHTML = i_local;
+            }
+        }(i), 3000);
+    }
+
+    function repeatStringNumTimes(string, times) {
+        var repeatedString = "";
+        while (times > 0) {
+            repeatedString += string;
+            times--;
+        }
+        return repeatedString;
+        document.getElementById('valueIds').innerHTML = repeatedString.split(" ")[0];
+
+    }
+    repeatStringNumTimes('sfd' + '\n', 5)
+    
+    </script>
+</head>
+
+<body>
+    <h1>heading of javascript</h1>
+    <p id="valueId"></p>
+    <p id="valueIds"></p>
+</body>
+
+</html>
