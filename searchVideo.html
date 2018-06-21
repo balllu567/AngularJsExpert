@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <title>javascript code</title>
+    <script type="text/javascript" src="../js/angular.min.js"></script>
+    <script type="text/javascript" src="../js/searchvideo.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+</head>
+
+<body ng-app="searchvideoApp" ng-controller="searchvideoController">
+     <h1>{{searchvideo}}</h1>
+
+     <!-- <h2 ng-repeat="data in datajson">{{data}}</h2> -->
+
+     <div class="search_video" ng-repeat="data in datajson">
+         <div class="search_Img {{data.name}}"></div>
+         <div class="search_TextName">{{data.name}}</div>
+     </div>
+
+
+</body>
+
+</html>
