@@ -1,0 +1,120 @@
+<!Doctype>
+<html>
+
+<head>
+    <title>bootCrudTable</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/bootCrudTable.js"></script>
+</head>
+
+<body>
+    <div ng-app="MyApp" class="container" ng-controller="Book">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <td>ID</td>
+                <td>
+                    <input type="text" class="form-control" ng-model="item.id" />
+                </td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" class="form-control" ng-model="item.name" />
+                </td>
+            </tr>
+            <tr>
+                <td>EmailID</td>
+                <td>
+                    <input type="email" class="form-control" ng-model="item.email" />
+                </td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td>
+                    <input type="password" class="form-control" ng-model="item.password" />
+                </td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td>
+                    <input type="number" class="form-control" ng-model="item.phone" />
+                </td>
+            </tr>
+            <tr>
+                <td>Manager list</td>
+                <td>
+                    <select ng-model="item.manager">
+                        <option value="mohan">Mr. Mohan</option>
+                        <option value="rohan">Mr. Rohan</option>
+                        <option value="sohan">Mr. Sohan</option>
+                    </select>
+                </td> 
+            </tr>
+            <tr>
+                <td>Joining Date</td>
+                <td>
+                    <input type="date" class="form-control" ng-model="item.joindate">
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right" colspan="2">
+                    <button ng-click="addItem(item)" class="btn btn-primary">
+                        Add New Contact
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Emp ID</th>
+                    <th>Emp Name</th>
+                    <th>Emp EmailID</th>
+                    <th>Emp Phone</th>
+                    <th>Manager List</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in items">
+                    <td><span ng-hide="editMode">{{item.id}}</span>
+                        <input type="text" ng-show="editMode" ng-model="item.id" />
+                    </td>
+                    <td>
+                        <span ng-hide="editMode">{{item.name}}</span>
+                        <input type="text" ng-show="editMode" ng-model="item.name" />
+                    </td>
+                    <td>
+                        <span ng-hide="editMode">{{item.email}}</span>
+                        <input type="text" ng-show="editMode" ng-model="item.email" />
+                    </td>
+                    <td>
+                        <span ng-hide="editMode">{{item.phone}}</span>
+                        <input type="text" ng-show="editMode" ng-model="item.phone" />
+                    </td>
+                    <td>
+                        <span ng-hide="editMode">{{item.manager}}</span>
+                        <input type="text" ng-show="editMode" ng-model="item.manager" />
+                    </td>
+                    <td>
+                        <span ng-hide="editMode">{{item.joindate}}</span>
+                        <input type="date" ng-show="editMode" ng-model="item.joindate">
+                    </td>
+                    <td>
+                        <i ng-hide="editMode" ng-click="editMode = true; editItem(item)" class="fa fa-edit"></i>
+                        <i class="fa fa-save" ng-show="editMode" ng-click="editMode = false"></i>
+                    </td>
+                    <td>
+                        <i ng-click="removeItem($index)" class="fa fa-trash-o"></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
